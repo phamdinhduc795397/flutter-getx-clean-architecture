@@ -1,20 +1,20 @@
 import 'dart:io';
-import 'package:getx_clean_architecture/providers/network/api_endpoint.dart';
-import 'package:getx_clean_architecture/providers/network/api_provider.dart';
-import 'package:getx_clean_architecture/providers/network/api_request_representable.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_endpoint.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_provider.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_request_representable.dart';
 
 enum AuthType { login, logout }
 
 class AuthAPI implements APIRequestRepresentable {
   final AuthType type;
-  final String username;
-  final String repo;
+  String? username;
+  String? password;
 
-  const AuthAPI._(
-      {required this.type, required this.username, required this.repo});
+  AuthAPI._({required this.type, this.password, this.username});
 
-  const AuthAPI.login({required String username, required String repo})
-      : this._(type: AuthType.login, username: username, repo: repo);
+  AuthAPI.login(String username, String repo) : this._(type: AuthType.login);
+  AuthAPI.register(String password, String username)
+      : this._(type: AuthType.login, username: username, password: password);
 
   @override
   String get endpoint => APIEndpoint.github;
@@ -22,7 +22,7 @@ class AuthAPI implements APIRequestRepresentable {
   String get path {
     switch (type) {
       case AuthType.login:
-        return "/$username/$repo";
+        return "/$username/$username";
       case AuthType.logout:
         return "/login";
       default:

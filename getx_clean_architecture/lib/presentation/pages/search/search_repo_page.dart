@@ -17,7 +17,7 @@ class SearchRepoPage extends GetView<SearchRepoController> {
             children: [
               Row(
                 children: [
-                  Flexible(
+                  Expanded(
                       child: TextField(
                     controller: textController,
                   )),

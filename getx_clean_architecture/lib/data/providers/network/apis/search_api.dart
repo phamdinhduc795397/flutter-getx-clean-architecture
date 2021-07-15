@@ -1,31 +1,29 @@
 import 'dart:io';
 
-import 'package:getx_clean_architecture/providers/network/api_endpoint.dart';
-import 'package:getx_clean_architecture/providers/network/api_provider.dart';
-import 'package:getx_clean_architecture/providers/network/api_request_representable.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_endpoint.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_provider.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_request_representable.dart';
 
-enum SearchType { repos, users }
+enum SearchType { repo, user }
 
 class SearchAPI implements APIRequestRepresentable {
   final SearchType type;
   final String q;
 
-  const SearchAPI._({required this.type, required this.q});
+  SearchAPI._({required this.type, required this.q});
 
-  const SearchAPI.repos(String q) : this._(type: SearchType.repos, q: q);
-  const SearchAPI.users(String q) : this._(type: SearchType.users, q: q);
+  SearchAPI.repos(String q) : this._(type: SearchType.repo, q: q);
+  SearchAPI.users(String q) : this._(type: SearchType.user, q: q);
 
   @override
   String get endpoint => APIEndpoint.github;
 
   String get path {
     switch (type) {
-      case SearchType.repos:
+      case SearchType.repo:
         return "/search/repositories?q=$q";
-      case SearchType.users:
+      case SearchType.user:
         return "/search/users?q=$q";
-      default:
-        return "";
     }
   }
 

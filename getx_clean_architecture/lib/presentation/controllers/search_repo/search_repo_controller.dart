@@ -4,15 +4,15 @@ import 'package:getx_clean_architecture/domain/usecases/search_repo_use_case.dar
 import 'package:getx_clean_architecture/presentation/pages/detail/detail_page.dart';
 
 class SearchRepoController extends GetxController {
-  SearchRepoController({required this.searchRepoUseCase});
-  final SearchRepoUseCase searchRepoUseCase;
+  SearchRepoController(this._searchRepoUseCase);
+  final SearchRepoUseCase _searchRepoUseCase;
 
   var repos = <Repo>[].obs;
   var isLoading = false.obs;
 
   search(String q) async {
     isLoading.value = true;
-    final res = await searchRepoUseCase.execute(q);
+    final res = await _searchRepoUseCase.execute(q);
     repos.clear();
     this.repos.addAll(res);
     isLoading.value = false;

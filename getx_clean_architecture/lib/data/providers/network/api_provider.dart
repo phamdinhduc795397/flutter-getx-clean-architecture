@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:get/get_connect/connect.dart';
-import 'package:getx_clean_architecture/providers/network/api_request_representable.dart';
+import 'package:getx_clean_architecture/data/providers/network/api_request_representable.dart';
 
 class APIProvider {
   static const requestTimeOut = Duration(seconds: 25);
