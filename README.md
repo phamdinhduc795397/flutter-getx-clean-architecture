@@ -1,15 +1,35 @@
 # flutter-getx-clean-architecture
-A Flutter Clean Architecture Using GetX.
+A Flutter Clean Architecture Using [GetX](https://github.com/jonataslaw/getx).
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Work Flow
+![alt text](/assets/Clean-Architecture-Flutter-Diagram.png?raw=true)
+## Project Structure
+|-- lib
+    |-- main.dart
+    |-- core
+        |-- services
+        |-- usecases
+        |-- util
+    |-- config
+        |-- app_constants.dart
+        |-- app_colors.dart
+        |-- app_text_styles.dart
+    |-- data
+        |-- models
+        |-- repositories
+        |-- providers
+            |-- database
+            |-- network
+                |-- apis
+                |-- api_endpoints.dart
+                |-- api_provider.dart
+                |-- api_representable.dart
+    |-- domain
+        |-- entities
+        |-- repositories
+        |-- usecases
+    |-- presentation
+        |-- controllers
+        |-- pages
+        |-- views
+        |-- app.dart

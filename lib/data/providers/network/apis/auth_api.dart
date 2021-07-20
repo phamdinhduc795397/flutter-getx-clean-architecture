@@ -17,7 +17,7 @@ class AuthAPI implements APIRequestRepresentable {
       : this._(type: AuthType.login, username: username, password: password);
 
   @override
-  String get endpoint => APIEndpoint.github;
+  String get endpoint => APIEndpoint.newsapi;
 
   String get path {
     switch (type) {

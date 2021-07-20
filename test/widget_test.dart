@@ -5,25 +5,53 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:getx_clean_architecture/presentation/app.dart';
+import 'package:getx_clean_architecture/domain/usecases/fetch_headline_use_case.dart';
+import 'package:getx_clean_architecture/domain/usecases/fetch_news_use_case.dart';
+import 'package:getx_clean_architecture/domain/usecases/signup_use_case.dart';
+
+import 'package:tuple/tuple.dart';
+
+import 'repositories/mock_article_repository.dart';
+import 'repositories/mock_auth_repository.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(App());
+  test('Sign up test', () async {
+    //Mock input
+    final registerUserName = "test username";
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    //Mock data
+    final signUpUseCase = SignUpUseCase(MockAuthenticationRepository());
+    final user = await signUpUseCase.execute(registerUserName);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    expect(user.username, registerUserName);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Fetch headline test', () async {
+    final pageSize = 20;
+    final currentPage = 1;
+
+    //Mock data
+    final fetchHeadlineUseCase = FetchHeadlineUseCase(MockArticleRepository());
+    final paging =
+        await fetchHeadlineUseCase.execute(Tuple2(currentPage, pageSize));
+
+    // Verify that data has created.
+    expect(paging.articles.length, 20);
+  });
+
+  test('Fetch news test', () async {
+    //Mock input
+    final keyword = "bitcoin";
+    final pageSize = 20;
+    final currentPage = 1;
+
+    //Mock data
+    final fetchHeadlineUseCase = FetchNewsUseCase(MockArticleRepository());
+    final paging = await fetchHeadlineUseCase
+        .execute(Tuple3(keyword, currentPage, pageSize));
+
+    // Verify that data has created.
+    expect(paging.articles.length, 3);
   });
 }

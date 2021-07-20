@@ -1,25 +1,64 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getx_clean_architecture/domain/entities/repo.dart';
-import 'package:getx_clean_architecture/domain/entities/user.dart';
+import 'package:getx_clean_architecture/config/app_text_styles.dart';
+import 'package:getx_clean_architecture/domain/entities/article.dart';
 
 class DetailPage extends StatelessWidget {
-  DetailPage({Key? key, this.repo, this.user}) : super(key: key);
+  final Article article;
 
-  Repo? repo;
-  User? user;
+  DetailPage({required this.article});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Detail")),
-      body: Column(
-        children: [
-          if (repo != null)
-            Text(repo?.fullName ?? "")
-          else
-            Text(user?.login ?? "")
-        ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text('Detail'),
+      ),
+      child: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            children: [
+              Text(
+                article.title ?? "",
+                style: AppTextStyle.title,
+                maxLines: null,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              AspectRatio(
+                aspectRatio: 16 / 9,
+                child: CachedNetworkImage(
+                  memCacheHeight: 150,
+                  memCacheWidth: 150,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  placeholder: (context, url) => CupertinoActivityIndicator(),
+                  errorWidget: (context, url, error) => Container(
+                    color: Colors.grey,
+                  ),
+                  imageUrl: article.urlToImage ?? "",
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                article.content ?? "",
+                style: AppTextStyle.body,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

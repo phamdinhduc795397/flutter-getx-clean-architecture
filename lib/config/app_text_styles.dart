@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 ///
 class AppTextStyle {
   static TextStyle title = TextStyle(
-    fontSize: 30,
-    color: Colors.yellow[800],
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
   );
 
   static TextStyle body = TextStyle(
-    fontSize: 20,
-    color: Colors.yellow[800],
+    fontSize: 13,
+    color: Colors.grey,
   );
 }

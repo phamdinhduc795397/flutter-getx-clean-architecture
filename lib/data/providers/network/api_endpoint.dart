@@ -1,3 +1,3 @@
 class APIEndpoint {
-  static String get github => "https://api.github.com";
+  static String get newsapi => "https://newsapi.org/v2";
 }
