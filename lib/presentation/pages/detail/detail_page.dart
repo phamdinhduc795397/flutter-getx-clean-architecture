@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getx_clean_architecture/config/app_text_styles.dart';
+import 'package:getx_clean_architecture/app/config/app_text_styles.dart';
 import 'package:getx_clean_architecture/domain/entities/article.dart';
 
 class DetailPage extends StatelessWidget {
@@ -22,7 +22,7 @@ class DetailPage extends StatelessWidget {
             children: [
               Text(
                 article.title ?? "",
-                style: AppTextStyle.title,
+                style: AppTextStyles.title,
                 maxLines: null,
               ),
               SizedBox(
@@ -53,7 +53,7 @@ class DetailPage extends StatelessWidget {
               ),
               Text(
                 article.content ?? "",
-                style: AppTextStyle.body,
+                style: AppTextStyles.body,
               ),
             ],
           ),

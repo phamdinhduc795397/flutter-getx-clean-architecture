@@ -1,4 +1,4 @@
-import 'package:getx_clean_architecture/core/usecases/pram_usecase.dart';
+import 'package:getx_clean_architecture/app/core/usecases/pram_usecase.dart';
 import 'package:getx_clean_architecture/domain/entities/paging.dart';
 import 'package:getx_clean_architecture/domain/repositories/article_repository.dart';
 import 'package:tuple/tuple.dart';

@@ -1,26 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_clean_architecture/app/types/category_type.dart';
 import 'package:getx_clean_architecture/presentation/controllers/news/news_controller.dart';
 import 'package:getx_clean_architecture/presentation/pages/detail/detail_page.dart';
 import 'package:getx_clean_architecture/presentation/pages/headline/views/article_cell.dart';
-
-enum CategoryType { bitcoin, apple, earthquake, animal }
-
-extension CategoryKeyword on CategoryType {
-  String get keyword {
-    switch (this) {
-      case CategoryType.bitcoin:
-        return "bitcoin";
-      case CategoryType.apple:
-        return "apple";
-      case CategoryType.earthquake:
-        return "earthquake";
-      case CategoryType.animal:
-        return "animal";
-    }
-  }
-}
 
 class NewsPage extends StatefulWidget {
   @override

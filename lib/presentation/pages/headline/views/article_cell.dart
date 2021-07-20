@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getx_clean_architecture/app/config/app_text_styles.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:getx_clean_architecture/config/app_text_styles.dart';
 import 'package:getx_clean_architecture/domain/entities/article.dart';
 
 class ArticleCell extends StatelessWidget {
@@ -43,18 +43,18 @@ class ArticleCell extends StatelessWidget {
                 Text(
                   article.title ?? "",
                   maxLines: 2,
-                  style: AppTextStyle.title,
+                  style: AppTextStyles.title,
                 ),
                 Spacer(),
                 Text(
                   article.author ?? "",
                   maxLines: 1,
-                  style: AppTextStyle.body,
+                  style: AppTextStyles.body,
                 ),
                 Text(
                   Jiffy(article.publishedAt).yMMMMd,
                   maxLines: 1,
-                  style: AppTextStyle.body,
+                  style: AppTextStyles.body,
                 ),
               ],
             ),

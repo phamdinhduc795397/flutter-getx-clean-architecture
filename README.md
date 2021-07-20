@@ -6,14 +6,17 @@ A Flutter Clean Architecture Using [GetX](https://github.com/jonataslaw/getx).
 ## Project Structure
 |-- lib
     |-- main.dart
-    |-- core
+    |-- app
+        |-- core
+            |-- usecases
+        |-- config
+            |-- app_constants.dart
+            |-- app_colors.dart
+        |   -- app_text_styles.dart
         |-- services
-        |-- usecases
         |-- util
-    |-- config
-        |-- app_constants.dart
-        |-- app_colors.dart
-        |-- app_text_styles.dart
+        |-- types
+        |-- extensitons
     |-- data
         |-- models
         |-- repositories

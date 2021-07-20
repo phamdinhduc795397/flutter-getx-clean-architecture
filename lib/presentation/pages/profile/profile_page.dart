@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_clean_architecture/config/app_colors.dart';
-import 'package:getx_clean_architecture/config/app_text_styles.dart';
+import 'package:getx_clean_architecture/app/config/app_colors.dart';
+import 'package:getx_clean_architecture/app/config/app_text_styles.dart';
 import 'package:getx_clean_architecture/presentation/controllers/auth/auth_controller.dart';
 
 class ProfilePage extends GetView<AuthController> {
@@ -42,7 +42,7 @@ class SignInView extends GetView<AuthController> {
               "Username:",
               Text(
                 controller.user?.username ?? "",
-                style: AppTextStyle.title,
+                style: AppTextStyles.title,
               ),
             ),
             TextButton(onPressed: controller.logout, child: Text("Logout")),
@@ -57,7 +57,7 @@ class SignInView extends GetView<AuthController> {
       children: [
         Text(
           title,
-          style: AppTextStyle.title,
+          style: AppTextStyles.title,
         ),
         SizedBox(
           width: 10,
@@ -86,7 +86,7 @@ class SignUpView extends StatelessWidget {
               height: 50,
               child: Text(
                 "Register your username",
-                style: AppTextStyle.title,
+                style: AppTextStyles.title,
               ),
             ),
             SizedBox(height: 50),
@@ -117,7 +117,7 @@ class SignUpView extends StatelessWidget {
       },
       child: Text(
         "Register",
-        style: AppTextStyle.body,
+        style: AppTextStyles.body,
       ),
       color: AppColors.primary,
       elevation: 0,
