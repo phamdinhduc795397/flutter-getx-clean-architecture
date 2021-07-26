@@ -38,3 +38,7 @@ A Flutter Clean Architecture Using [GetX](https://github.com/jonataslaw/getx).
         |-- views
         |-- app.dart
 ```
+
+## Features
+- Integrating Unit Test.
+- Create an easy to use API provider with [GetConnect](https://github.com/jonataslaw/getx#getconnect).
