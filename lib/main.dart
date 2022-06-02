@@ -5,7 +5,7 @@ import 'package:getx_clean_architecture/app/util/dependency.dart';
 import 'package:getx_clean_architecture/presentation/app.dart';
 
 void main() async {
-  DenpendencyCreator.init();
+  DependencyCreator.init();
   WidgetsFlutterBinding.ensureInitialized();
   await initServices();
   runApp(App());
